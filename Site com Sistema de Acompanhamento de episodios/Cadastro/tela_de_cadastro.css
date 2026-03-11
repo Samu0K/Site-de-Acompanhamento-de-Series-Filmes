@@ -1,0 +1,13 @@
+body {
+    background-color: black;
+}
+
+ul{
+    color: aliceblue;
+    list-style: none;
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    
+}
