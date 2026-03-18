@@ -3,6 +3,7 @@
         flex-direction: column;
         align-items: center;
         gap: 10px;
+
     }
 }
 
@@ -11,29 +12,24 @@ body {
 }
     
 div{
-    position: absolute;
     top: 0;
     right: 0;
     left: 0;
-    background-color: rgba(44, 42, 42, 0.082);
+    background-color: rgba(0, 0, 0, 0.185);
     margin-left: -1%;
     margin-top: -1.9%;
 }
 
 ul {
-    top: 19px;
-    left: 300px;
     list-style: none;
+    gap: 60px;
+    align-items: center;
     display: flex;
-    gap: 50px;
-    position: fixed;
 }
 
 h1 {
-    margin-top: 2%;
-    margin-left: 2%;
     color: rgba(135, 217, 255, 0.932);
-
+    font-size: 60px;
 }
     
 a {
@@ -48,16 +44,76 @@ a {
     
 }
 
-button {
-    position: fixed;
-    top: 10px; 
-    right: 30px;
-    display: flex;
-    justify-content: center;
-    padding: 10px 20px;
-    color: blue;
-    border-bottom: 10px;
-    border-bottom-style: none;
-    z-index: 1000;
+#adicionar {
+    background-color: blueviolet;
+    color: rgb(255, 255, 255);
+    height: 60px;
+    width: 60px;
+    border-radius: 20px;
+    font-size: 50px;
+    align-items: center;
+    position: absolute;
+    margin-top: 1000px ;
+    right: 40px;
 }
 
+.menu-expansivo {
+    right: 20px;
+    margin-top: 20;
+    position: fixed;
+    right: 20px;
+    z-index: 100;
+    align-items: flex-end;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-principal {
+    margin-top: 20px;
+    background-color: #7159c1;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    right: 10px;
+    
+}
+
+.botoes-escondidos {
+    height: 35px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+
+    
+    /* ESTADO INICIAL: Escondido */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px); /* Efeito de deslizar */
+    transition: all 0.4s ease;   /* Transição suave de 0.4s */
+}
+
+/* QUANDO PASSAR O MOUSE NO CONTAINER: Mostra os filhos */
+.menu-expansivo:hover .botoes-escondidos {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0); /* Volta para o lugar original */
+}
+
+/* Estilo dos botões internos */
+.botoes-escondidos button {
+    padding: 8px;
+    cursor: pointer;
+    border: 1px solid #7159c1;
+    background: white;
+    border-radius: 4px;
+}
+
+.botoes-escondidos button:hover {
+    background-color: #7159c1;
+}

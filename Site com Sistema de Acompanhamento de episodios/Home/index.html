@@ -8,18 +8,23 @@
 </head>
 
 <body>
-   
-    <div class id="menu">
-
-        <h1>
-           MyWatchList
-        </h1>
-        <a href="Cadastro/tela_de_cadastro.html">
-            <button type="button" id="entrar">Entar</button>
+   <div class="menu-expansivo">
+    <button class="btn-principal">Login</button>
+    
+    <div class="botoes-escondidos">
+        <button id="entrar">Já tenho uma conta</button>
+        <a href="/Home/Cadastro/tela_de_cadastro.html">
+            <button id="cadastro">Não tenho uma conta</button>
         </a>
-        
+    </div>
+</div>
+
+    <div class="menu">
         <menu>
             <ul>
+                <h1 id="titulo">
+                     MyWatchList
+                </h1>
                 <li>
                     <a href="">
                         Lançamentos
@@ -39,8 +44,7 @@
             </ul>
         </menu>
     </div>
-    
-    
+    <button type="button" id="adicionar">+</button> 
+    <script src="script.js"></script>
 </body>
-
 </html>
