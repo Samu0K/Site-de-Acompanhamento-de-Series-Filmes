@@ -17,7 +17,7 @@ if __name__ == "__main__":
     temporadas = input("Digite o número de temporadas da série: ")
     episodios = input("Digite o número de episódios da série: ")
     adicionar_series(titulo, genero, ano, temporadas, episodios)
-
+    
 def listar_series():
     conexao = sqlite3.connect('banco_de_dados.db')
     cursor = conexao.cursor()
@@ -30,4 +30,4 @@ def listar_series():
               
     conexao.close()
 
-
+print(listar_series())
