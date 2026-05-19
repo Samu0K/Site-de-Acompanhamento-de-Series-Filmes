@@ -1,3 +1,5 @@
+const API_URL = "http://127.0.0.1:5000";
+
 const levar = document.getElementById("botao_confirmar")
 levar.addEventListener("click", async function (event) {
 
@@ -8,7 +10,7 @@ levar.addEventListener("click", async function (event) {
     const idade = document.getElementById("data_nascimento").value
     const senha = document.getElementById("senha").value
 
-    fetch("http://127.0.0.1:5000/Home/Cadastro/tela_de_cadastro", {
+    fetch("http://127.0.0.1:5000", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

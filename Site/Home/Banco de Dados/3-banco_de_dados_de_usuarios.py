@@ -5,7 +5,7 @@ from flask import Flask, request, jsonify
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 
-@app.route("/Home/Cadastro/tela_de_cadastro.html", methods= ['POST'])
+@app.route("./cadastro/tela_de_cadastro", methods= ['POST'])
 
 def rota():
     dados_usuario = request.json
