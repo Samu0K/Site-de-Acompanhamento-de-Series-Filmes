@@ -1,5 +1,3 @@
-
-
 @media (max-width: 600px){
 
         #ul{
@@ -43,7 +41,7 @@
 }
 
 body {
-    background-image: url(/Home/Imagens/—Pngtree—wall\ of\ movie\ posters\ on_3620105.jpg);
+    background-image: url(../imagens/fundo.jpg);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;

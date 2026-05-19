@@ -12,7 +12,7 @@ def criar_banco_de_dados():
             email TEXT NOT NULL UNIQUE,
             data_nascimento TEXT NOT NULL,
             senha TEXT NOT NULL UNIQUE,
-        )
+        );
            
     ''')
     conn.commit()
