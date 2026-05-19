@@ -1,15 +1,14 @@
 import sqlite3
 import flask
-import request
-import jsonify
+from flask import Flask, request, jsonify
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 
-@app.route("Home/casdastro/tela_de_cadastro.css", methods= ['POST'])
+@app.route("/Home/Cadastro/tela_de_cadastro.html", methods= ['POST'])
 
 def rota():
-    dados_usuario = request.json()
+    dados_usuario = request.json
     adicionar_usuario(dados_usuario['nome'], dados_usuario['apelido'], dados_usuario['email'], dados_usuario['data_nascimento'], dados_usuario['senha'] )
     return jsonify({"status": "Cadastrado com sucesso"})
 
@@ -17,7 +16,7 @@ def rota():
 def adicionar_usuario(nome, apelido, email, data_nascimento, senha):
     conexao = sqlite3.connect('banco_de_dados.db')
     cursor = conexao.cursor()
-    cursor.execute("""INSERT INTO (nome, apelido, email, data_nascimento, senha) VALUES (?, ?, ?, ?, ?)""", (nome, apelido, email, data_nascimento, senha))
+    cursor.execute("""INSERT INTO banco_de_dados_de_usuario.db (nome, apelido, email, data_nascimento, senha) VALUES (?, ?, ?, ?, ?)""", (nome, apelido, email, data_nascimento, senha))
     conexao.commit()
     cursor.close()
     conexao.close()
@@ -25,12 +24,7 @@ def adicionar_usuario(nome, apelido, email, data_nascimento, senha):
 
 
 if __name__ == "__main__":
-    titulo = input("Digite o seu nome: ")
-    genero = input("Digite o gênero da série: ")
-    ano = int(input("Digite o ano de lançamento da série: "))
-    temporadas = input("Digite o número de temporadas da série: ")
-    episodios = input("Digite o número de episódios da série: ")
-    adicionar_usuario(titulo, genero, ano, temporadas, episodios)
+    app.run(port=5000, debug=True)
     
 def listar_usuario():
     conexao = sqlite3.connect('banco_de_dados.db')
