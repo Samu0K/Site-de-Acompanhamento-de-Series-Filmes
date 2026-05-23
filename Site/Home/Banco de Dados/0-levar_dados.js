@@ -101,4 +101,28 @@ function atualizarUIDeslogado() {
 
 
 async function carregarSeries() {
-    const Lista
+    const lista = document.getElementById("lista-series");
+    if (!lista) return;
+
+    try {
+        const resposta = await fetch('${API}/series', {credentials: 'include'});
+        const series = await resposta.json();
+
+        lista.innerHTML = "<p>Nenhuma série encontrada.</p>";
+        return;
+    }
+
+    series.forEach((s) => {
+        const card = document.createElement("div");
+        card.className = "card-serie";
+        card.innerHTML = `
+            <h3>${s.titulo}</h3>
+            <p><strong>Gênero:</strong> ${s.genero}</p>
+            <p><strong>Ano:</strong> ${s.ano}</p>
+            <p><strong>Temporadas:</strong> ${s.temporadas} &nbsp;|&nbsp;<strong>Episódios:</strong> ${s.episodios}</p>
+        `;
+        lista.appendChild(card);
+    });
+    } catch {
+        if (lista) lista.innerHTML = "<p>Erro ao carregar séries.</p>";
+    }
