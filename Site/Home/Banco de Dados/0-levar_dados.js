@@ -126,3 +126,25 @@ async function carregarSeries() {
     } catch {
         if (lista) lista.innerHTML = "<p>Erro ao carregar séries.</p>";
     }
+
+
+
+function mostrarCadastro() {
+    document.getElementById("secao-login").style.display = "none";
+    document.getElementById("secao-cadastro").style.display = "block";
+}
+
+function mostrarLogin() {
+    document.getElementById("secao-cadastro").style.display = "none";
+    document.getElementById("secao-login").style.display = "block";
+}
+
+document.getElementById("DOMContentLoaded",() => {
+    const formCadastro = document.getElementById("form-cadastro");
+    const formLogin = document.getElementById("form-login");
+
+    if (formCadastro) formCadastro.addEventListener("submit", cadastrar);
+    if (formLogin) formLogin.addEventListener("submit", login);
+
+    carregarSeries();
+});
