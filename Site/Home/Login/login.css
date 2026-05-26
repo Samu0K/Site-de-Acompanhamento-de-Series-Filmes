@@ -1,0 +1,47 @@
+body {
+    background-image: url(../imagens/fundo.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+
+h1 {
+    color: blue;
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+form {
+    
+    border-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    border: 30px 30px 30px 30px solid #000000;
+    background-color: #201f1f7e;
+
+}
+
+li {
+
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    font-size: 15px;
+    
+    padding: 0.5em;
+    border-radius: 5px;
+    border: none;
+    width: 400px;
+    height: 23px;
+}
+

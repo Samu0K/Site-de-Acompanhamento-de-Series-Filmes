@@ -53,15 +53,6 @@ body {
     border-color: aliceblue; 
 }
 
-ul{
-    margin-left: 30%;
-    margin-right: 30%;
-    border-radius: 10px;
-    background-color: #00000098;
-    list-style: none;
-    justify-content: center;
-    align-items: center;
-}
 
 li{
     display: flex;
