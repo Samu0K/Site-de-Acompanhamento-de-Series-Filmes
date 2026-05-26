@@ -112,7 +112,7 @@ async function carregarSeries() {
         return;
     }
 
-    series.forEach((s) => {
+     .forEach((s) => {
         const card = document.createElement("div");
         card.className = "card-serie";
         card.innerHTML = `
