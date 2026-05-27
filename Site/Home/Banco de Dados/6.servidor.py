@@ -1,0 +1,46 @@
+from flask import Flask, request, jsonify, session
+from flask_cors import CORS
+import sqlite3
+import hashlib
+import os
+
+app = Flask(__name__)
+app.secret_key = "chave_secreta_do_site"
+CORS(app, supports_credentials=True)
+
+DB_USUARIOS = "banco_de_dados_de_usuario.bd"
+DB_SERIES = "banco_de_dados.db"
+
+def get_conn(db_path):
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    return conn
+
+def hash_senha(senha):
+    return hashlib.sha256(senha.encode()).hexdigest()
+
+# Rota de cadastro
+
+@app.route("/cadastro", methods=["POST"])
+def cadastro():
+    dados = request.json
+    nome = dados.get("nome", "").strip()
+    apelido = dados.get("apelido", "").strip()
+    email = dados.get("email", "").strip()
+    data_nascimento = dados.get("data_nascimento", "").strip()
+    senha = dados.get("senha", "").strip()
+
+    if not nome or not email or not senha:
+        return jsonify({"status": "Erro", "mensagem": "Nome, email e senha são obrigatórios."}), 400
+    
+    if len(senha) < 6:
+        return jsonify({"status": "Erro", "mensagem": "A senha deve ter pelo menos 6 caracteres."}), 400
+    
+    try:
+        conn = get_conn(DB_USUARIOS)
+        conn.execute("INSERT INTO usuarios (nome, apelido, email, data_nascimento, senha) VALUES (?, ?, ?, ?, ?)",(nome, apelido, email, data_nascimento, hash_senha(senha)))
+        conn.commit()
+        return jsonify({"status": "Sucesso", "mensagem": "Usuário cadastrado com sucesso."}), 201
+    
+    except sqlite3.IntegrityError:
+        return jsonify({"status": "Erro", "mensagem": "Email ou apelido já estão em uso."}), 409
