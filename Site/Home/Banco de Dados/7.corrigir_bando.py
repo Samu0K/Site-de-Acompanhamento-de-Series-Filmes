@@ -15,4 +15,8 @@ print("Banco de dados criado com sucesso!")
 
 conn = sqlite3.connect("banco_de_dados.db")
 
-conn.execute()
+conn.execute("DROP TABLE IF EXISTS usuarios")
+conn.commit()
+conn.close()
+
+print("Banco de dados corrigido!")
