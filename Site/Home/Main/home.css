@@ -28,8 +28,11 @@ ul {
 }
 
 h1 {
-    color: rgba(135, 217, 255, 0.932);
-    font-size: 60px;
+      color: blue;
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 1em;
+    text-shadow: 2px 2px 4px rgb(255, 0, 0);
 }
     
 a {
@@ -71,7 +74,7 @@ a {
 
 .btn-principal {
     margin-top: 20px;
-    background-color: #7159c1;
+    background-color: #0a34f1;
     color: white;
     padding: 10px 20px;
     border: none;

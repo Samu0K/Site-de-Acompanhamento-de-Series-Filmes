@@ -21,20 +21,20 @@ form {
     flex-direction: column;
     align-items: center;
     gap: 1em;
-    border: 30px 30px 30px 30px solid #000000;
-    background-color: #0f0f0fc9;
     border-radius: 15px;
     padding: 20px;
 }
 
 li {
-
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #0f0f0fc9;
+    border-radius: 15px;
+    padding: 20px;
 }
 
 input {
