@@ -108,11 +108,12 @@ async function carregarSeries() {
         const resposta = await fetch('${API}/series', {credentials: 'include'});
         const series = await resposta.json();
 
-        lista.innerHTML = "<p>Nenhuma série encontrada.</p>";
-        return;
-    }
+        if (series.length === 0) {
+            lista.innerHTML = "<p>Nenhuma série encontrada.</p>";
+            return;
+        }
 
-     .forEach((s) => {
+        series.forEach((s) => {
         const card = document.createElement("div");
         card.className = "card-serie";
         card.innerHTML = `
