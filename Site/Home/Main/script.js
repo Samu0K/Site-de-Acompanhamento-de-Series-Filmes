@@ -21,3 +21,7 @@ function carregarUsuario(){
         window.location.href = "../login/login.html";
     }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    carregarUsuario();
+});
