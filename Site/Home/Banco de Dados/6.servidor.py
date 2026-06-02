@@ -8,7 +8,7 @@ app = Flask(__name__)
 app.secret_key = "chave_secreta_do_site"
 CORS(app, supports_credentials=True)
 
-DB_USUARIOS = "banco_de_dados_de_usuario.bd"
+DB_USUARIOS = "banco_de_dados_de_usuario.db"
 DB_SERIES = "banco_de_dados.db"
 
 def get_conn(db_path):
@@ -44,3 +44,23 @@ def cadastro():
     
     except sqlite3.IntegrityError:
         return jsonify({"status": "Erro", "mensagem": "Email ou apelido já estão em uso."}), 409
+    
+@app.route("/login", methods=["POST"])
+def login():
+    dados = request.json
+    email = dados.get("email", "").strip()
+    senha = dados.get("senha", "").strip()
+
+    conn = get_conn(DB_USUARIOS)
+    usuario = conn.execute("SELECT * FROM usuarios WHERE email = ? AND senha = ?", (email, hash_senha(senha))).fetchone()
+    conn.close()
+
+    if usuario:
+        session["usuario_id"] = usuario["id"]
+        session["usuario_nome"] = usuario["nome"]
+        return jsonify({"status": "Sucesso", "mensagem": "Login realizado com sucesso.", "nome": usuario["nome"]}), 200
+    else:
+        return jsonify({"erro": "Email ou senha inválidos."}), 401
+    
+if __name__ == "__main__":
+    app.run(debug=True, port=5000)
