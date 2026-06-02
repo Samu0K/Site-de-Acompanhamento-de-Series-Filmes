@@ -11,3 +11,13 @@ function aparecer(){
         
     });
 }
+
+function carregarUsuario(){
+    const dados = localStorage.getItem("usuario");
+    if (dados) {
+        const usuario = JSON.parse(dados);
+        document.getElementById("nome-usuario").textContent = usuario.nome;
+    } else {
+        window.location.href = "../login/login.html";
+    }
+}
