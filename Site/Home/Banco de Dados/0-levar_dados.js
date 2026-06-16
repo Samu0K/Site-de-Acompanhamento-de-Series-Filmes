@@ -2,7 +2,7 @@ const API = "http://localhost:5000"
 
 function mostrarMensagem(elementoId, texto, tipo = "erro") {
     const elemen = document.getElementById(elementoId);
-    if (!elemen);
+    if (!elemen) return;
     elemen.textContent = texto;
     elemen.className = `mensagem ${tipo}`;
     elemen.style.display = 'block';
@@ -125,7 +125,7 @@ async function carregarSeries() {
     } catch {
         if (lista) lista.innerHTML = "<p>Erro ao carregar séries.</p>";
     }
-
+}
 
 
 function mostrarCadastro() {
