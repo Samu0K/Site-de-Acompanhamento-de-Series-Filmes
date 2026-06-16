@@ -4,7 +4,7 @@ function mostrarMensagem(elementoId, texto, tipo = "erro") {
     const elemen = document.getElementById(elementoId);
     if (!elemen);
     elemen.textContent = texto;
-    elemen.className = 'mensagem ${tipo}';
+    elemen.className = `mensagem ${tipo}`;
     elemen.style.display = 'block';
     setTimeout(() => {elemen.style.display = 'none';}, 4000);
 }
@@ -23,11 +23,8 @@ async function cadastrar(event) {
         return;
     }
     
-}
-
-
-try {
-    const resposta = await fetch ('${API}/cadastro', {
+    try {
+        const resposta = await fetch (`${API}/cadastro`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({nome, email, senha})
@@ -41,8 +38,9 @@ try {
     } else {
         mostrarMensagem("mensagem", data.erro, "erro");
     }
-} catch(error) {
-    mostrarMensagem("mensagem", "Erro ao cadastrar usuário.", "erro");
+    } catch(error) {
+        mostrarMensagem("mensagem", "Erro ao cadastrar usuário.", "erro");
+    }
 }
 
 
@@ -53,7 +51,7 @@ async function login(event) {
     const senha = document.getElementById("senha").value.trim();
 
     try {
-        const resposta = await fetch('${API}/login', {
+        const resposta = await fetch(`${API}/login`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({email, senha})
@@ -75,7 +73,7 @@ async function login(event) {
 
 
 async function logout() {
-    await fetch('${API}/logout', {
+    await fetch(`${API}/logout`, {
         method: 'POST', credentials: 'include'});
     atualizarUILogado();
 }
@@ -105,7 +103,7 @@ async function carregarSeries() {
     if (!lista) return;
 
     try {
-        const resposta = await fetch('${API}/series', {credentials: 'include'});
+        const resposta = await fetch(`${API}/series`, {credentials: 'include'});
         const series = await resposta.json();
 
         if (series.length === 0) {
@@ -149,3 +147,4 @@ document.getElementById("DOMContentLoaded",() => {
 
     carregarSeries();
 });
+}
