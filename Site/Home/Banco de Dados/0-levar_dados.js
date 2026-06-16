@@ -138,7 +138,7 @@ function mostrarLogin() {
     document.getElementById("secao-login").style.display = "block";
 }
 
-document.getElementById("DOMContentLoaded",() => {
+document.addEventListener("DOMContentLoaded",() => {
     const formCadastro = document.getElementById("form-cadastro");
     const formLogin = document.getElementById("form-login");
 
