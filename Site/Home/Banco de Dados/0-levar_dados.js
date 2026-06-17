@@ -52,7 +52,7 @@ async function login(event) {
 
     try {
         const resposta = await fetch(`${API}/login`, {
-            method: 'GET' || 'POST',
+            method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({email, senha})
         });
