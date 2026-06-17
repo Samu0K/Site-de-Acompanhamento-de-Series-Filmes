@@ -45,7 +45,7 @@ def cadastro():
     except sqlite3.IntegrityError:
         return jsonify({"status": "Erro", "mensagem": "Email ou apelido já estão em uso."}), 409
     
-@app.route("/login", methods=["POST"])
+@app.route("/login", methods=["GET", "POST"])
 def login():
     dados = request.json
     email = dados.get("email", "").strip()

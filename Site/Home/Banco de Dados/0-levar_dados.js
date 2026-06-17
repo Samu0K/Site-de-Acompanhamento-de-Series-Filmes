@@ -52,7 +52,7 @@ async function login(event) {
 
     try {
         const resposta = await fetch(`${API}/login`, {
-            method: 'POST',
+            method: 'GET' || 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({email, senha})
         });
@@ -147,4 +147,4 @@ document.addEventListener("DOMContentLoaded",() => {
 
     carregarSeries();
 });
-}
+
