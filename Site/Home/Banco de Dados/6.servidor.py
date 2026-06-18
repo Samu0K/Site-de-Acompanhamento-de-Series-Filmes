@@ -44,6 +44,9 @@ def cadastro():
     
     except sqlite3.IntegrityError:
         return jsonify({"status": "Erro", "mensagem": "Email ou apelido já estão em uso."}), 409
+    except Exception as e:
+        print(f"Erro no banco: {e}")
+        return jsonify({"status": "Erro", "mensagem": "Erro interno ao salvar no banco."}), 500
     
 @app.route("/login", methods=["POST"])
 def login():
