@@ -38,10 +38,11 @@ def cadastro():
     
     try:
         conn = get_conn(DB_USUARIOS)
-        conn.execute("INSERT INTO usuarios (nome, apelido, email, data_nascimento, senha) VALUES (?, ?, ?, ?, ?)",(nome, apelido, email, data_nascimento, hash_senha(senha)))
+        cursor = conn.cursor()
+        cursor.execute("INSERT INTO usuarios (nome, apelido, email, data_nascimento, senha) VALUES (?, ?, ?, ?, ?)",(nome, apelido, email, data_nascimento, hash_senha(senha)))
         conn.commit()
+        conn.close()
         return jsonify({"status": "Sucesso", "mensagem": "Usuário cadastrado com sucesso."}), 201
-    
     except sqlite3.IntegrityError:
         return jsonify({"status": "Erro", "mensagem": "Email ou apelido já estão em uso."}), 409
     except Exception as e:

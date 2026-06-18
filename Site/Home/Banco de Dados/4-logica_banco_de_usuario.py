@@ -1,18 +1,17 @@
-import _sqlite3
-import _json
+import sqlite3
 
 def criar_banco_de_dados():
-    conn = _sqlite3.connect('banco_de_dados_de_usuario.db')
+    conn = sqlite3.connect('banco_de_dados_de_usuario.db')
     cursor = conn.cursor()
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS usuario (
+        CREATE TABLE IF NOT EXISTS usuarios (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             nome TEXT NOT NULL,
             apelido TEXT NOT NULL UNIQUE,
             email TEXT NOT NULL UNIQUE,
             data_nascimento TEXT NOT NULL,
-            senha TEXT NOT NULL UNIQUE,
-        );
+            senha TEXT NOT NULL
+        )
            
     ''')
     conn.commit()

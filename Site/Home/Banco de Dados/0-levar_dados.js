@@ -36,7 +36,9 @@ async function cadastrar(event) {
 
     if (resposta.ok) {
         mostrarMensagem("mensagem", data.mensagem, "sucesso");
-        document.getElementById("inscriçao").reset();
+        // O ID correto deve ser o do formulário (form-cadastro)
+        const form = document.getElementById("form-cadastro") || document.getElementById("inscriçao");
+        if (form) form.reset();
     } else {
         mostrarMensagem("mensagem", data.mensagem || data.erro, "erro");
     }
@@ -63,7 +65,9 @@ async function login(event) {
 
         if (resposta.ok) {
             mostrarMensagem("mensagem", data.mensagem, "sucesso");
-            document.getElementById("botao_confirmar").reset();
+            // Botão não tem método reset(). Deve ser o formulário.
+            const form = document.getElementById("form-login");
+            if (form) form.reset();
             atualizarUILogado(data.nome);
         } else {
             mostrarMensagem("mensagem", data.erro, "erro");

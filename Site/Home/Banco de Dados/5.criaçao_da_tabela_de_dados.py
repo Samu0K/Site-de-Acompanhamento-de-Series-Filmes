@@ -23,3 +23,4 @@ conn.commit()
 conn.close()
 
 print("Bancos corrigidos!")
+
