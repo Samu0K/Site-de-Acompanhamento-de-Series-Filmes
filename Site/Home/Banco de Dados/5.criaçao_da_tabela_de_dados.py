@@ -6,6 +6,8 @@ conn.execute('''
     CREATE TABLE IF NOT EXISTS usuarios (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         nome TEXT NOT NULL,
+        apelido TEXT UNIQUE,
+        data_nascimento TEXT,
         email TEXT UNIQUE NOT NULL,
         senha TEXT NOT NULL,
         data_cadastro TEXT DEFAULT CURRENT_TIMESTAMP
