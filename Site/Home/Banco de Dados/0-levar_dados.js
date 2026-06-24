@@ -15,7 +15,6 @@ async function cadastrar(event) {
     event.preventDefault();
 
     const nome = document.getElementById("nome").value.trim();
-    const apelido = document.getElementById("apelido")?.value.trim() || "";
     const data_nascimento = document.getElementById("data_nascimento")?.value.trim() || "";
     const email = document.getElementById("email").value.trim();
     const senha = document.getElementById("senha").value.trim();
@@ -29,7 +28,7 @@ async function cadastrar(event) {
         const resposta = await fetch (`${API}/cadastro`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({nome, apelido, email, data_nascimento, senha})
+        body: JSON.stringify({nome, data_nascimento, email, senha})
     });
 
     const data = await resposta.json();
