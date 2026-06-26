@@ -9,14 +9,14 @@ app.config["DEBUG"] = True
 
 def rota():
     dados_usuario = request.json
-    adicionar_usuario(dados_usuario['nome'], dados_usuario['apelido'], dados_usuario['email'], dados_usuario['data_nascimento'], dados_usuario['senha'] )
+    adicionar_usuario(dados_usuario['nome'], dados_usuario['email'], dados_usuario['data_nascimento'], dados_usuario['senha'] )
     return jsonify({"status": "Cadastrado com sucesso"})
 
 
-def adicionar_usuario(nome, apelido, email, data_nascimento, senha):
+def adicionar_usuario(nome, email, data_nascimento, senha):
     conexao = sqlite3.connect('banco_de_dados.db')
     cursor = conexao.cursor()
-    cursor.execute("""INSERT INTO banco_de_dados_de_usuario.db (nome, apelido, email, data_nascimento, senha) VALUES (?, ?, ?, ?, ?)""", (nome, apelido, email, data_nascimento, senha))
+    cursor.execute("""INSERT INTO banco_de_dados_de_usuario.db (nome, email, data_nascimento, senha) VALUES (?, ?, ?, ?, ?)""", (nome, email, data_nascimento, senha))
     conexao.commit()
     cursor.close()
     conexao.close()
@@ -29,8 +29,8 @@ if __name__ == "__main__":
 def listar_usuario():
     conexao = sqlite3.connect('banco_de_dados.db')
     cursor = conexao.cursor()
-    cursor.execute('SELECT * FROM series')
-    series = cursor.fetchall()
+    cursor.execute('SELECT * FROM usuarios')
+    usuarios = cursor.fetchall()
 
     print("\n--- Minha Lista de Séries ---")
     for s in series:

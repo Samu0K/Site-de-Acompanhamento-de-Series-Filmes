@@ -1,7 +1,7 @@
 import sqlite3
 
 def adicionar_series(titulo, genero, ano, temporadas, episodios):
-    conexao = sqlite3.connect('banco_de_dados.db')
+    conexao = sqlite3.connect('banco_de_series.db')
     cursor = conexao.cursor()
     cursor.execute("""INSERT INTO series (titulo, genero, ano, temporadas, episodios) VALUES (?, ?, ?, ?, ?)""", (titulo, genero, ano, temporadas, episodios))
     conexao.commit()
@@ -19,7 +19,7 @@ if __name__ == "__main__":
     adicionar_series(titulo, genero, ano, temporadas, episodios)
     
 def listar_series():
-    conexao = sqlite3.connect('banco_de_dados.db')
+    conexao = sqlite3.connect('banco_de_series.db')
     cursor = conexao.cursor()
     cursor.execute('SELECT * FROM series')
     series = cursor.fetchall()
